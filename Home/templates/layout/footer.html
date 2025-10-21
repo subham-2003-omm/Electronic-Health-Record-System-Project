@@ -1,0 +1,135 @@
+<div class="container-fluid">
+    <footer class="py-5 footer-frosted">
+        <div class="container text-center">
+
+            <!-- Navigation Links -->
+            <!-- <ul class="nav justify-content-center mb-4 nav-links">
+                <li class="nav-item"><a href="#" class="nav-link footer-link">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link footer-link">Services</a></li>
+                <li class="nav-item"><a href="#" class="nav-link footer-link">Portfolio</a></li>
+                <li class="nav-item"><a href="#" class="nav-link footer-link">Blog</a></li>
+                <li class="nav-item"><a href="#" class="nav-link footer-link">Contact</a></li>
+            </ul> -->
+
+            <!-- Social Icons -->
+            <div class="mb-4 social-wrap">
+                <a href="https://www.facebook.com/share/1Aq5LhV3LA/" class="social-icon mx-2" class="social-icon"><i
+                        class="bi bi-facebook"></i></a>
+                <a href="https://x.com/chan9021_das?t=lofuF5wtJJZNpNd0hXqgnw&s=08" class="social-icon"><i class="bi bi-twitter"></i></a>
+                <a href="https://www.instagram.com/omm9021?igsh=bHEzeDF6aXJjMnFq" class="social-icon"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/subham-chandra-das-31a531287" class="social-icon"><i class="bi bi-linkedin"></i></a>
+            </div>
+
+            <!-- Copyright -->
+            <p class="fw-light mb-0 text-light">
+                © 2025 <strong>MyCompany</strong>. Crafted with ❤️
+            </p>
+        </div>
+    </footer>
+</div>
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+    /* Frosted Glass Footer with soft gradient */
+    .footer-frosted {
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(15px);
+        border-radius: 25px 25px 0 0;
+        padding: 60px 0;
+        box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+    }
+
+    /* Animated subtle gradient overlay */
+    .footer-frosted::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(120deg, #6a11cb, #2575fc, #f7971e, #f953c6);
+        opacity: 0.2;
+        z-index: 0;
+        animation: moveGradient 12s ease infinite;
+    }
+
+    @keyframes moveGradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Navigation Links */
+    .footer-link {
+        position: relative;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1.1rem;
+        margin: 0 12px;
+        padding: 6px 10px;
+        transition: all 0.3s ease;
+        z-index: 1;
+    }
+
+    .footer-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: #ffffff;
+        border-radius: 2px;
+        transition: width 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .footer-link:hover {
+        color: #ffffff;
+    }
+
+    .footer-link:hover::after {
+        width: 50%;
+    }
+
+    /* Social Icons */
+    .social-icon {
+        position: relative;
+        font-size: 2rem;
+        color: white;
+        margin: 0 12px;
+        padding: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        transition: all 0.4s ease;
+        z-index: 1;
+    }
+
+    .social-icon:hover {
+        transform: scale(1.25);
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+
+    /* Footer text */
+    .text-light {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.7);
+    }
+</style>
+
+
+
+
+

@@ -1,0 +1,124 @@
+
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .card-form {
+        max-width: 500px;
+        margin: 50px auto;
+        background: linear-gradient(145deg, #ffffff, #e6f0ff);
+        padding: 30px 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .card-form:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-form h2 {
+        text-align: center;
+        color: #004085;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+    .form-group {
+        position: relative;
+        margin-bottom: 25px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        background: transparent;
+        outline: none;
+        transition: all 0.3s ease;
+        font-size: 14px;
+    }
+
+    .form-group label {
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        color: #6c757d;
+        pointer-events: none;
+        transition: 0.3s;
+        background: transparent;
+        padding: 0 5px;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group select:focus + label,
+    .form-group textarea:focus + label {
+        top: -10px;
+        left: 10px;
+        background: #e6f0ff;
+        font-size: 12px;
+        color: #004085;
+        font-weight: 600;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background-color: #004085;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: #0066cc;
+    }
+
+    .success-msg {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #c3e6cb;
+        text-align: center;
+        font-weight: 600;
+    }
+</style>
+
+<div class="card-form">
+    <h2>Create New Labrotry Test</h2>
+
+    <!-- Success message -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="success-msg">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            {{ field }}
+            <label>{{ field.label }}</label>
+            {% if field.errors %}
+                <p style="color:red; font-size:12px;">{{ field.errors }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <input type="submit" value="Create" class="submit-btn">
+    </form>
+</div>
+
+

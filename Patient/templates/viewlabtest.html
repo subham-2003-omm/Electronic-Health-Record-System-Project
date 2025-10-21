@@ -1,0 +1,170 @@
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #f2f6fc;
+    }
+
+    .checklist-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #ffffff;
+        padding: 40px 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .checklist-title {
+        font-size: 1.8rem;
+        color: #007bff;
+        font-weight: 700;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .checklist-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f8f9fa;
+        padding: 12px 15px;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+    }
+
+    .checklist-item:hover {
+        background: #e2e6ea;
+    }
+
+    .checklist-item label {
+        margin: 0;
+        font-weight: 500;
+        color: #343a40;
+    }
+
+    .checklist-item input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        accent-color: #007bff; /* modern colored checkbox */
+        cursor: pointer;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        background-color: #28a745;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: #218838;
+    }
+</style>
+
+<div class="checklist-container">
+    <div class="checklist-title">Welcome {{ user.Name|title }}, select your tests</div>
+    <form method="post">
+        {% csrf_token %}
+        {% for data in testdata %}
+        <div class="checklist-item">
+            <label>{{ data.test_name }} - ₹{{ data.test_Price }}</label>
+            <input type="checkbox" name="selected_tests" value="{{ data.test_id }}">
+        </div>
+        {% endfor %}
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
+
+
+
+<!-- <div class="checklist-container">
+  <div class="checklist-title">Welcom {{user.Name}}, select Your Tests</div>
+  <form method="post">
+    {% csrf_token %}
+
+    {% for data in testdata %}
+    <div class="checklist-item">
+      <label>{{ data.test_name }} - ₹{{data.test_Price}}</label>
+      <input type="checkbox" name="selected_tests" value="{{ data.test_id }}">
+    </div>
+    {% endfor %}
+    <button type="submit" class="submit-btn">Submit</button>
+
+  </form>
+
+</div> -->
+
+
+
+
+<!-- <form method="post">
+  {% csrf_token %}
+  <table border="1">
+    <tr>
+      <th>Test Name</th>
+      <th>Test Price</th>
+      <th>Select</th>
+    </tr>
+    {% for data in testdata %}
+    <tr>
+      <td>{{ data.test_name }}</td>
+      <td>{{ data.test_Price }}</td>
+      <td>
+        <input type="checkbox" name="selected_tests" value="{{ data.test_id }}">
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <br>
+  <button type="submit">Submit</button>
+</form> -->
+
+
+
+
+
+<!-- <table border="solid">
+  <tr>
+    <td>Test name</td>
+    <td>Test Price </td>
+    <td>Select</td>
+  </tr>
+  {% for data in testdata %}
+  <form method="post">
+    {% csrf_token %}
+  <tr>
+    <td>{{data.test_name}}</td>
+    <td>{{data.test_Price}}</td>
+    <input type="text" value="{{data.test_id}}" hidden>
+    <td><input type="checkbox" name="" id=""></td>
+  </tr>
+  
+  </form>
+{% endfor %}
+
+</table> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

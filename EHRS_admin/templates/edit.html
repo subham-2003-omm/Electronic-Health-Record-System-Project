@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edit User</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .card {
+    background: #fff;
+    width: 450px;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  }
+
+  h1 {
+    text-align: center;
+    color: #2563eb;
+    margin-bottom: 25px;
+    font-weight: 600;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  label {
+    font-weight: 500;
+    color: #374151;
+  }
+
+  input, select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    background: #f9fafb;
+  }
+
+  input:focus, select:focus {
+    border-color: #2563eb;
+    outline: none;
+    background: #fff;
+  }
+
+  input[type="submit"] {
+    background: #2563eb;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+
+  input[type="submit"]:hover {
+    background: #1d4ed8;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Edit User</h1>
+  <form method="post" action="{% url 'update' %}">
+    {% csrf_token %}
+
+    <label>Name</label>
+    <input type="text" name="name" value="{{user.Name}}" required>
+
+    <label>Email</label>
+    <input type="email" name="email" value="{{user.Email}}" required>
+
+    <label>Gender</label>
+    <input type="text" name="gender" value="{{user.Gender}}" required>
+
+    <label>Role Name</label>
+    <input type="text" name="role" value="{{user.Role_name}}" required>
+
+    <label>Mobile</label>
+    <input type="text" name="mob" value="{{user.Mob}}" required>
+
+    <label>DOB</label>
+    <input type="date" name="dob" value="{{user.DOB|date:'Y-m-d'}}" required>
+
+    <label>Status</label>
+    <select name="status" required>
+      <option value="Active" {% if user.Status == "Active" %}selected{% endif %}>Active</option>
+      <option value="Inactive" {% if user.Status == "Inactive" %}selected{% endif %}>Inactive</option>
+    </select>
+
+    <input type="submit" value="Update">
+  </form>
+</div>
+</body>
+</html>
+
+
+
+<!-- 
+<h1>edit page</h1>
+<form method="post" action="{% url 'update' %}">
+    {% csrf_token %}
+  Name  <input type="text" name="name" value="{{user.Name}}"> <br>
+
+Email <input type="email" name="email" value="{{user.Email}}"> <br>
+Gender <input type="text" name="gender" value="{{user.Gender}}"> <br>
+Role_name <input type="text" name="role" value="{{user.Role_name}}"> <br>
+Mobile <input type="text" name="mob" value="{{user.Mob}}"> <br>
+DOB <input type="text" name="dob" value="{{user.DOB | date:'Y-m-d'}}"> <br>
+Status <input type="text" name="status" value="{{user.Status}}"> <br>
+
+<input type="submit" value="Update" name="btn"> <br>
+
+
+
+</form> -->

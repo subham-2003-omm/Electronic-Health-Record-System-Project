@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .update-card {
+      width: 100%;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      padding: 40px;
+      animation: fadeIn 0.7s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .update-card h2 {
+      margin-bottom: 25px;
+      font-weight: 700;
+      text-align: center;
+      color: #2575fc;
+    }
+    .form-label {
+      font-weight: 600;
+      color: #444;
+    }
+    .form-control {
+      border-radius: 10px;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      transition: 0.3s;
+    }
+    .form-control:focus {
+      border-color: #2575fc;
+      box-shadow: 0 0 5px rgba(37,117,252,0.5);
+    }
+    .btn-update {
+      width: 100%;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      border: none;
+      padding: 12px;
+      border-radius: 12px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    .btn-update:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+<div class="update-card">
+  <h2>Update Profile</h2>
+
+  <form method="post" enctype="multipart/form-data" action="{% url 'adminprofile' %}">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" name="name" class="form-control" value="{{user.Name}}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" name="email" class="form-control" value="{{user.Email}}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Gender</label>
+      <input type="text" name="gender" class="form-control" value="{{user.Gender}}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Role Name</label>
+      <input type="text" name="role" class="form-control" value="{{user.Role_name}}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Mobile</label>
+      <input type="text" name="mob" class="form-control" value="{{user.Mob}}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">DOB</label>
+      <input type="date" name="dob" class="form-control" value="{{user.DOB|date:'Y-m-d'}}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Image</label>
+      <input type="file" name="image" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Document</label>
+      <input type="file" name="upload_doc" class="form-control">
+    </div>
+
+    <button type="submit" name="btn" class="btn-update">Update Profile</button>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+<!-- <h2>Update Profile</h2>
+
+<form method="post" enctype="multipart/form-data" action="{% url 'adminprofile' %}">
+    {% csrf_token %}
+  Name  <input type="text" name="name" value="{{user.Name}}"> <br>
+Email <input type="email" name="email" value="{{user.Email}}"> <br>
+Gender <input type="text" name="gender" value="{{user.Gender}}"> <br>
+Role_name <input type="text" name="role" value="{{user.Role_name}}"> <br>
+Mobile <input type="text" name="mob" value="{{user.Mob}}"> <br>
+DOB <input type="text" name="dob" value="{{user.DOB | date:'Y-m-d'}}"> <br>
+Image <input type="file" name="image"> <br>
+Document <input type="file" name="upload_doc"> <br>
+
+<input type="submit" value="Update" name="btn"> <br>
+
+</form> -->

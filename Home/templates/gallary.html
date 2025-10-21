@@ -1,0 +1,248 @@
+<!-- 
+{% load static %}
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+ -->
+
+<!-- Page Content -->
+
+<!-- <div class="container">
+
+  <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Thumbnail Gallery</h1>
+
+  <hr class="mt-2 mb-5">
+
+  <div class="row text-center text-lg-start">
+
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'images/images.jpg' %}" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'images/doo.jpg' %}" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'images/ss.jpg' %}" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'images/ods.jpg' %}" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'images/gre.jpg' %}" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'images/ss.jpg' %}" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'images/tue.jpg' %}" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'images/web.jpg' %}" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'images/pop.jpg' %}" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'images/men.jpg' %}" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'images/smi.jpg' %}" alt="">
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid img-thumbnail" src="{% static 'images/hash.jpg' %}" alt="">
+      </a>
+    </div>
+  </div>
+
+</div> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Gallery</title>
+  <style>
+    /* General body & background */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://t4.ftcdn.net/jpg/04/24/30/93/360_F_424309320_UkOxg2z3sq7yXwGnWCO6xBXkRI4byhnI.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+    }
+
+    /* Header & nav */
+    header {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover {
+      color: #00d8ff;
+    }
+
+    /* Page title */
+    h1 {
+      text-align: center;
+      padding: 30px 0 20px 0;
+      font-size: 36px;
+      letter-spacing: 1px;
+    }
+
+    /* Gallery grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 20px 50px;
+    }
+
+    /* Card styling */
+    .card {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 12px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card p {
+      margin: 10px 0 15px 0;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 1024px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      header nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="#">Gallery</a>
+      <a href="{% url 'contect' %}">Contact</a>
+    </nav>
+  </header>
+
+  <h1>Medical Gallery</h1>
+
+  <div class="gallery">
+    <div class="card">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/026/375/249/small_2x/ai-generative-portrait-of-confident-male-doctor-in-white-coat-and-stethoscope-standing-with-arms-crossed-and-looking-at-camera-photo.jpg" alt="Doctor">
+      <p>Doctor</p>
+    </div>
+    <div class="card">
+      <img src="https://media.istockphoto.com/id/2058341682/photo/portrait-of-smiling-multi-cultural-medical-team-wearing-scrubs-in-modern-hospital.jpg?s=612x612&w=0&k=20&c=QHsWb3yisFAQ-s1uM2Svw-hswlnIFn--YlCWtlWTJmQ=" alt="Nurse">
+      <p>Nurse</p>
+    </div>
+    <div class="card">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/036/372/442/small_2x/hospital-building-with-ambulance-emergency-car-on-cityscape-background-cartoon-illustration-vector.jpg" alt="Hospital">
+      <p>Hospital</p>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=600&q=80" alt="Medicine">
+      <p>Medicine</p>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80" alt="Surgery">
+      <p>Surgery</p>
+    </div>
+    <div class="card">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/002/393/103/small/doctor-in-mask-consulting-female-patient-physycian-sitting-at-the-desk-with-monitor-family-therapist-health-care-clinic-workspace-concept-stock-illustration-in-flat-style-isolated-on-white-vector.jpg" alt="Clinic">
+      <p>Clinic</p>
+    </div>
+    <div class="card">
+      <img src="https://media.istockphoto.com/id/1135284188/photo/if-you-need-its-here.jpg?s=612x612&w=0&k=20&c=2yfZHUqTEGW4-5r4Sc4pzWKx0DtubpdbTkX3h_w1AJg=" alt="Pharmacy">
+      <p>Pharmacy</p>
+    </div>
+    <div class="card">
+      <img src="https://media.istockphoto.com/id/493302504/photo/testing-substances.jpg?s=612x612&w=0&k=20&c=zxRr8On95eALl__Ff06rasZZt6oOud8gGH0_8GFRTH8=" alt="Laboratory">
+      <p>Laboratory</p>
+    </div>
+  </div>
+</body>
+
+</html>

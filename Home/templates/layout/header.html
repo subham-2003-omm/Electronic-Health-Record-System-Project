@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EHRS Project</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #eef2f7;
+    }
+
+    /* ===================== HEADER ===================== */
+    header {
+      background: linear-gradient(120deg, #0d47a1, #1976d2, #00acc1);
+      background-size: 300% 300%;
+      animation: gradientFlow 12s ease infinite;
+      padding: 14px 28px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom-left-radius: 18px;
+      border-bottom-right-radius: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Logo */
+    .logo-text {
+      display: flex;
+      align-items: center;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+    }
+
+    .logo-text i {
+      margin-right: 10px;
+      font-size: 2.2rem;
+      color: #4dd0e1;
+      text-shadow: 0 0 15px #80deea;
+    }
+
+    /* Tagline */
+    .tagline-container {
+      flex: 1;
+      margin: 0 30px;
+      position: relative;
+      height: 40px;
+      overflow: hidden;
+    }
+
+    .tagline {
+      position: absolute;
+      white-space: nowrap;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #e3f2fd;
+      letter-spacing: 1px;
+      animation: scrollText 14s linear infinite;
+    }
+
+    @keyframes scrollText {
+      0% { transform: translateX(100%); }
+      80% { transform: translateX(-100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Buttons */
+    .btn-custom {
+      background: rgba(255, 255, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: #fff !important;
+      font-weight: 600;
+      padding: 8px 22px;
+      border-radius: 25px;
+      margin-right: 10px;
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-custom:hover {
+      background: rgba(255, 255, 255, 0.45);
+      transform: translateY(-2px);
+    }
+
+    /* Hamburger Button */
+    .hamburger-btn {
+      background: #e3f2fd;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: inset -4px -4px 8px #fff, inset 4px 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .hamburger-btn:hover {
+      background: #bbdefb;
+      transform: rotate(90deg);
+    }
+
+    /* ===================== OFFCANVAS MENU ===================== */
+    /* Offcanvas */
+.offcanvas-end {
+    background: #0d47a1; /* Dark blue background */
+}
+
+.offcanvas-header {
+    background: #0d47a1;
+    color: #fff;
+}
+
+.offcanvas-body {
+    background: #0d47a1; /* Keep body same color for uniformity */
+    padding: 20px;
+}
+
+.offcanvas-body .nav-link {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    color: #fff; /* White text */
+    border-radius: 10px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.offcanvas-body .nav-link i {
+    margin-right: 10px;
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+.offcanvas-body .nav-link:hover {
+    background: #1976d2; /* Lighter blue on hover */
+    color: #fff;
+    text-decoration: none;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header>
+    <a href="/" class="logo-text">
+      <i class="bi bi-hospital"></i> EHRS
+    </a>
+
+    <div class="tagline-container">
+      <span class="tagline">Smart • Secure • Easy Electronic Health Records System</span>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <a href="{% url 'Signin' %}" class="btn btn-custom">Login</a> 
+      <a href="{% url 'signup' %}" class="btn btn-custom">Sign-up</a>
+      <button class="hamburger-btn ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuCanvas">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+  </header>
+  <!-- ===================== OFFCANVAS MENU ===================== -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="menuCanvas">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="bi bi-list me-2"></i>Menu</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="{% url 'home' %}" class="nav-link"><i class="bi bi-house-door"></i> Home</a></li>
+        <li class="nav-item"><a href="{% url 'contect' %}" class="nav-link"><i class="bi bi-telephone"></i> Contact</a></li>
+        <li class="nav-item"><a href="{% url 'gallary' %}" class="nav-link"><i class="bi bi-images"></i> Gallery</a></li>
+        <li class="nav-item"><a href="{% url 'faq' %}" class="nav-link"><i class="bi bi-question-circle"></i> FAQs</a></li>
+        <li class="nav-item"><a href="/about/" class="nav-link"><i class="bi bi-info-circle"></i> About</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

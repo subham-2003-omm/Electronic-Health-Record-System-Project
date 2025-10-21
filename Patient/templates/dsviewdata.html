@@ -1,0 +1,150 @@
+{% extends 'playout/base.html' %}
+{% block patientblock %}
+
+
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #f2f6fc;
+    }
+
+    .table-container {
+        max-width: 1000px;
+        margin: 40px auto;
+        overflow-x: auto;
+    }
+
+    table.user-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    table.user-table th,
+    table.user-table td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    table.user-table th {
+        background-color: #007bff;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    table.user-table tr:nth-child(even) {
+        background-color: #f2f4f8;
+    }
+
+    table.user-table tr:hover {
+        background-color: #d1ecf1;
+        transition: background-color 0.3s ease;
+    }
+
+    .action-btn {
+        padding: 8px 12px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+
+    .action-btn:hover {
+        background-color: #218838;
+    }
+</style>
+
+<div class="table-container">
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>Reg ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>DOB</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Role Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in ddata %}
+            <tr>
+                <td>{{ user.Reg_id }}</td>
+                <td>{{ user.Name }}</td>
+                <td>{{ user.Email }}</td>
+                <td>{{ user.Mob }}</td>
+                <td>{{ user.DOB }}</td>
+                <td>{{ user.Gender }}</td>
+                <td>{{ user.Address }}</td>
+                <td>{{ user.Role_name }}</td>
+                <td>
+                    <form method="post" style="margin:0;">
+                        {% csrf_token %}
+                        <input type="hidden" name="email" value="{{ user.Email }}">
+                        <input type="submit" value="Appointment" class="action-btn" name="btn">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <table border="solid">
+<tr>
+    <th>Reg_id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>DOB</th>
+    <th>Gender</th>
+    <th>Address</th>
+    <th>Role Name</th>
+    <th>Action</th>
+</tr>
+{% for user in ddata %}
+<form method="post">
+ {% csrf_token %}  
+<tr>
+    <td>{{user.Reg_id}}</td>
+    <td>{{user.Name}}</td>
+    <td>{{user.Email}}</td>
+    <td>{{user.Mob}}</td>
+    <td>{{user.DOB}}</td>
+    <td>{{user.Gender}}</td>
+    <td>{{user.Address}}</td>
+    <td>{{user.Role_name}}</td>
+    
+    <td>
+        <input type="text" value="{{user.Email}}" name="email" hidden>
+        <input type="submit" value="Appointment" name="btn">
+    </td>
+</tr>
+</form>
+
+{% endfor %}
+
+</table> -->
+
+{% endblock %}

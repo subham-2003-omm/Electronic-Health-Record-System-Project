@@ -1,0 +1,109 @@
+{% extends 'slayout/base.html' %}
+{% block staffblock %}
+
+<style>
+    .staff-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .staff-table th, .staff-table td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    .staff-table th {
+        background-color: #007bff;
+        color: white;
+        font-weight: 600;
+    }
+
+    .staff-table tr:nth-child(even) {
+        background-color: #e9ecef;
+    }
+
+    .staff-table tr:hover {
+        background-color: #d1ecf1;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    h2 {
+        color: #343a40;
+        margin-bottom: 10px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+
+<div class="table-container">
+    <h2>Staff Details</h2>
+    <table class="staff-table">
+        <thead>
+            <tr>
+                <th>Reg ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>DOB</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Role Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in pdata %}
+            <tr>
+                <td>{{ user.Reg_id }}</td>
+                <td>{{ user.Name }}</td>
+                <td>{{ user.Email }}</td>
+                <td>{{ user.Mob }}</td>
+                <td>{{ user.DOB }}</td>
+                <td>{{ user.Gender }}</td>
+                <td>{{ user.Address }}</td>
+                <td>{{ user.Role_name }}</td>
+            </tr>
+            {% endfor %}
+
+            {% for user in ddata %}
+            <tr>
+                <td>{{ user.Reg_id }}</td>
+                <td>{{ user.Name }}</td>
+                <td>{{ user.Email }}</td>
+                <td>{{ user.Mob }}</td>
+                <td>{{ user.DOB }}</td>
+                <td>{{ user.Gender }}</td>
+                <td>{{ user.Address }}</td>
+                <td>{{ user.Role_name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

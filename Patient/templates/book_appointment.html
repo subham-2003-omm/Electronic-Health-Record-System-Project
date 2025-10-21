@@ -1,0 +1,165 @@
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #f2f6fc;
+    }
+
+    .appointment-card {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px 40px;
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .appointment-card h2 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 30px;
+        font-weight: 700;
+    }
+
+    .form-group {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        outline: none;
+        background: transparent;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .form-group label {
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        color: #6c757d;
+        pointer-events: none;
+        background: #ffffff;
+        padding: 0 5px;
+        transition: 0.3s;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group textarea:focus + label,
+    .form-group textarea:not(:placeholder-shown) + label {
+        top: -10px;
+        left: 10px;
+        font-size: 12px;
+        color: #007bff;
+        font-weight: 600;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background-color: #28a745;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: #218838;
+    }
+</style>
+
+<div class="appointment-card">
+    <h2>Book Appointment</h2>
+    <form method="POST" action="{% url 'takeappointment' %}">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <input type="text" name="dname" value="{{ Ddata.Name }}" required>
+            <label>Doctor Name</label>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="demail" value="{{ Ddata.Email }}" required>
+            <label>Doctor Email</label>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="dmobile" value="{{ Ddata.Mob }}" required>
+            <label>Doctor Contact</label>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="pname" value="{{ pdata.Name }}" required>
+            <label>Patient Name</label>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="pemail" value="{{ pdata.Email }}" required>
+            <label>Patient Email</label>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="pmobile" value="{{ pdata.Mob }}" required>
+            <label>Patient Contact</label>
+        </div>
+
+        <div class="form-group">
+            <input type="date" name="pdob" value="{{ pdata.DOB|date:'Y-m-d' }}" required>
+            <label>Patient DOB</label>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="paddress" value="{{ pdata.Address }}" required>
+            <label>Patient Address</label>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="pgender" value="{{ pdata.Gender }}" required>
+            <label>Gender</label>
+        </div>
+
+        <div class="form-group">
+            <textarea name="disease" required></textarea>
+            <label>Diseases / Symptoms</label>
+        </div>
+
+        <input type="submit" value="Book Appointment" class="submit-btn" name="btn">
+    </form>
+</div>
+
+
+
+
+
+
+
+<!-- <form method="POST" action="{% url 'takeappointment' %}">
+    {% csrf_token %}
+    doctorName <input type="text" name="dname" value="{{Ddata.Name}}"> <br>
+    doctorEmail <input type="text" name="demail" value="{{Ddata.Email}}"> <br>
+    doctorContact <input type="text" name="dmobile" value="{{Ddata.Mob}}"> <br>
+    patient_Name <input type="text" name="pname" value="{{pdata.Name}}"> <br>
+    patient_Email <input type="text" name="pemail" value="{{pdata.Email}}"> <br>
+    patient_Contact <input type="text" name="pmobile" value="{{pdata.Mob}}"> <br>
+    patient_Dob <input type="text" name="pdob" value="{{pdata.DOB | date:"Y-m-d"}}"> <br>
+    patient_Address <input type="text" name="paddress" value="{{pdata.Address}}"> <br>
+    Gender <input type="text" name="pgender" value="{{pdata.Gender}}"> <br>
+    Diseases <textarea name="disease" id=""></textarea> <br>
+
+    <input type="submit" value="BOOK_Appointment" name="btn"> 
+    
+</form> -->

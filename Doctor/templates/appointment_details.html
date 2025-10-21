@@ -1,0 +1,183 @@
+
+{% if appointment %}
+<div class="appointment-container">
+    <h1 class="page-title">Appointments</h1>
+    <table class="appointment-table">
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Mobile</th>
+                <th>Gender</th>
+                <th>DOB</th>
+                <th>Address</th>
+                <th>Diseases</th>
+                <th>Apply Date</th>
+                <th>Status</th>
+                <th>Action</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in appointment %}
+            <tr>
+                <td>{{ data.p_name }}</td>
+                <td>{{ data.p_mobile }}</td>
+                <td>{{ data.p_gender }}</td>
+                <td>{{ data.dob }}</td>
+                <td>{{ data.p_address }}</td>
+                <td>{{ data.p_disease }}</td>
+                <td>{{ data.todaydate }}</td>
+                <td><span class="status {{ data.status|lower }}">{{ data.status }}</span></td>
+                <td>
+                    {% if data.status == "Pending" %}
+                        <form action="{% url 'approve_appointment' %}" method="POST" style="display:inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="appointment_id" value="{{ data.id }}">
+                            <button type="submit" name="btn" value="approve" class="btn btn-approve">Approve</button>
+                        </form>
+                        <form action="{% url 'cancel_appointment' %}" method="POST" style="display:inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="appointment_id" value="{{ data.id }}">
+                            <button type="submit" name="btn" value="cancel" class="btn btn-cancel">Cancel</button>
+                        </form>
+                    {% else %}
+                        <form action="{% url 'cancel_appointment' %}" method="POST" style="display:inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="appointment_id" value="{{ data.id }}">
+                            <button type="submit" name="btn" value="cancel" class="btn btn-cancel">Cancel</button>
+                        </form>
+                    {% endif %}
+                </td>
+                <td>
+                    <form method="post" action="{% url 'viewdetails' %}">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ data.id }}" name="pid">
+                        <button type="submit" name="btn" value="ViewDetails" class="btn btn-view">View Details</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% else %}
+<p>No appointments found for you.</p>
+{% endif %}
+
+<style>
+.appointment-container {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.appointment-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.appointment-table th, .appointment-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.status.pending { color: orange; font-weight: bold; }
+.status.approved { color: green; font-weight: bold; }
+.status.cancelled { color: red; font-weight: bold; }
+
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin: 2px;
+}
+
+.btn-approve { background-color: #4CAF50; color: white; }
+.btn-cancel { background-color: #f44336; color: white; }
+.btn-view { background-color: #2196F3; color: white; }
+.btn:hover { opacity: 0.9; }
+</style>
+
+
+<!-- {% if appointment %}
+<table border="solid">
+    <tr>
+        <th>patient name</th>
+        <th>Mobile</th>
+        <th>Gender</th>
+        <th>DOB</th>
+        <th>Address</th>
+        <th>Diseases</th>
+        <th>Apply date</th>
+        <th>status</th>
+        <th>Action</th>
+        <th>View</th>
+    </tr>
+    {% for data in appointment %}
+    <tr>
+        <td>{{data.p_name}}</td>
+        <td>{{data.p_mobile}}</td>
+        <td>{{data.p_gender}}</td>
+        <td>{{data.dob}}</td>
+        <td>{{data.p_address}}</td>
+        <td>{{data.p_disease}}</td>
+        <td>{{data.todaydate}}</td>
+        <td>{{data.status}}</td>  
+        <td>
+            {% if data.status == "Pending" %}
+            <form action="{% url 'approve_appointment' %}" method="POST" style="display:inline;">
+                {% csrf_token %}                          
+                <input type="hidden" name="appointment_id" value="{{ data.id }}">
+                <button type="submit" class="btn-approve">Approve</button>
+            </form>
+        
+            <form action="{% url 'cancel_appointment' %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="appointment_id" value="{{ data.id }}">
+                <button type="submit" class="btn-cancel">Cancel</button>
+            </form>
+
+             
+                      {% else %}
+                    <form action="{% url 'cancel_appointment' %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="appointment_id" value="{{ data.id }}">
+                        <button type="submit" class="btn-cancel">Cancel</button>
+                    </form>
+                    {% endif %}
+                </td>
+                <td>
+                    
+                    <form method="post" action="{% url 'viewdetails' %}">
+                        {% csrf_token %}
+                        
+                        <input type="hidden" value="{{data.id}}" name="pid">
+                    <input type="submit" value="ViewDetails" name="btn">
+                    </form>
+                    
+                </td>
+            </tr>
+        </td>
+    </tr>
+    
+    {% endfor %}
+
+</table>
+ {% else %}
+        <p>No appointments found for you.</p>
+    {% endif %} -->
+    
